@@ -14,6 +14,7 @@ CREATE TABLE [dbachecks].[Prod_dbachecks_summary_stage](
 	[TagFilter] [nvarchar](max) NULL,
 	[ExcludeTagFilter] [nvarchar](max) NULL,
 	[TestNameFilter] [nvarchar](max) NULL,
+	[ScriptBlockFilter] [nvarchar](max) NULL,
 	[TotalCount] [int] NULL,
 	[PassedCount] [int] NULL,
 	[FailedCount] [int] NULL,
@@ -33,6 +34,7 @@ CREATE TABLE [dbachecks].[Prod_dbachecks_summary](
 	[TagFilter] [nvarchar](max) NULL,
 	[ExcludeTagFilter] [nvarchar](max) NULL,
 	[TestNameFilter] [nvarchar](max) NULL,
+	[ScriptBlockFilter] [nvarchar](max) NULL,
 	[TotalCount] [int] NULL,
 	[PassedCount] [int] NULL,
 	[FailedCount] [int] NULL,
@@ -63,8 +65,8 @@ BEGIN
 	SET NOCOUNT ON;
  
     INSERT INTO [dbachecks].[Prod_dbachecks_summary] 
-	([TagFilter], [ExcludeTagFilter], [TestNameFilter], [TotalCount], [PassedCount], [FailedCount], [SkippedCount], [PendingCount], [InconclusiveCount], [Time], [TestResult])
-	SELECT [TagFilter], [ExcludeTagFilter], [TestNameFilter], [TotalCount], [PassedCount], [FailedCount], [SkippedCount], [PendingCount], [InconclusiveCount], [Time], [TestResult] FROM [dbachecks].[Prod_dbachecks_summary_stage]
+	([TagFilter], [ExcludeTagFilter], [TestNameFilter], [ScriptBlockFilter], [TotalCount], [PassedCount], [FailedCount], [SkippedCount], [PendingCount], [InconclusiveCount], [Time], [TestResult])
+	SELECT [TagFilter], [ExcludeTagFilter], [TestNameFilter], [ScriptBlockFilter], [TotalCount], [PassedCount], [FailedCount], [SkippedCount], [PendingCount], [InconclusiveCount], [Time], [TestResult] FROM [dbachecks].[Prod_dbachecks_summary_stage]
  
 END
 GO
